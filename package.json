@@ -15,9 +15,14 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run:qauto": "cypress run --config-file ./config/qauto.config.js",
+  "cy:run:qauto2": "cypress run --config-file ./config/qauto2.config.js"
   },
   "devDependencies": {
-    "cypress": "^15.14.2"
+    "cypress": "^15.14.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
   }
 }

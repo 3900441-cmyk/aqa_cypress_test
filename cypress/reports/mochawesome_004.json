@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-05-29T11:06:24.931Z",
+    "end": "2026-05-29T11:06:27.776Z",
+    "duration": 2845,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "141dcb3a-755a-4553-84c3-45a2fbd77971",
+      "title": "",
+      "fullFile": "cypress\\e2e\\garage.cy.js",
+      "file": "cypress\\e2e\\garage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "541cbeba-b611-4be7-b75d-de3441fa0337",
+          "title": "Garage and Fuel Expenses Flow",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a car and fuel expense for it",
+              "fullTitle": "Garage and Fuel Expenses Flow should successfully add a car and fuel expense for it",
+              "timedOut": null,
+              "duration": 2786,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const carMileage = 1200;\nconst expenseMileage = 1500;\n// 1. Додаємо машину\n_GaragePage.default.addCar('BMW', 'X5', carMileage);\ncy.get('.car-heading').should('contain', 'BMW X5');\n// 2. Додаємо витрати палива\n_GaragePage.default.clickAddExpenseForFirstCar();\n_ExpensesPage.default.addFuelExpense(expenseMileage, '50', '2500');\n// Перевірка успішності (наприклад, поява алерта або закриття модалки)\ncy.get('.modal-content').should('not.exist');",
+              "err": {
+                "message": "CypressError: `cy.env()` must be passed a non-empty list of strings. You passed: 'userEmail'.\n\nhttps://on.cypress.io/env\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage and Fuel Expenses Flow`",
+                "estack": "CypressError: `cy.env()` must be passed a non-empty list of strings. You passed: 'userEmail'.\n\nhttps://on.cypress.io/env\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage and Fuel Expenses Flow`\n    at Context.env (https://guest:welcome2qauto@qauto.forstudy.space/__cypress/runner/cypress_runner.js:123867:70)\n    at wrapped (https://guest:welcome2qauto@qauto.forstudy.space/__cypress/runner/cypress_runner.js:146474:43)\nFrom Your Spec Code:\n    at Context.eval (webpack:///../cypress/e2e/garage.cy.js:10:33)",
+                "diff": null
+              },
+              "uuid": "f6d992b3-77b7-4bf7-8a76-cdbec3637830",
+              "parentUUID": "541cbeba-b611-4be7-b75d-de3441fa0337",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "f6d992b3-77b7-4bf7-8a76-cdbec3637830"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 2786,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
