@@ -5,10 +5,10 @@ export default defineConfig({
   ...baseConfig,
   e2e: {
     ...baseConfig.e2e,
-    baseUrl: 'https://guest:welcome2qauto@qauto.forstudy.space/', 
+    baseUrl: 'https://guest:welcome2qauto@qauto2.forstudy.space/', 
     env: {
-      userEmail: 'test_prod@example.com',
-      userPassword: '6WiiW!9LTxAQBWW'
+      userEmail: 'another_test@example.com',
+      userPassword: '3eWWbzq!LDMLhTd'
     }
   }
 });

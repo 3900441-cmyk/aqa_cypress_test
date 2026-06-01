@@ -23,17 +23,3 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('#signinPassword').type(password, { sensitive: true });
   cy.get('.modal-footer .btn-primary').click();
 });
-
-Cypress.Commands.add('createExpenseViaApi', (carId, expenseData) => {
-  return cy.request({
-    method: 'POST',
-    url: '/api/expenses', 
-    body: {
-      carId: carId,
-      reportedAt: expenseData.reportedAt,
-      mileage: expenseData.mileage,
-      liters: expenseData.liters,
-      totalCost: expenseData.totalCost
-    }
-  });
-});
