@@ -1,0 +1,109 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 0,
+    "pending": 0,
+    "failures": 1,
+    "start": "2026-05-29T10:59:52.375Z",
+    "end": "2026-05-29T10:59:52.507Z",
+    "duration": 132,
+    "testsRegistered": 1,
+    "passPercent": 0,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "cd83caa6-6740-4c33-a44b-c7b883cdda03",
+      "title": "",
+      "fullFile": "cypress\\e2e\\garage.cy.js",
+      "file": "cypress\\e2e\\garage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "ca4f3226-d7ac-4bd0-b292-0151ceb2e01a",
+          "title": "Garage and Fuel Expenses Flow",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a car and fuel expense for it",
+              "fullTitle": "Garage and Fuel Expenses Flow should successfully add a car and fuel expense for it",
+              "timedOut": null,
+              "duration": 110,
+              "state": "failed",
+              "speed": null,
+              "pass": false,
+              "fail": true,
+              "pending": false,
+              "context": null,
+              "code": "const carMileage = 1200;\nconst expenseMileage = 1500;\n// 1. Додаємо машину\n_GaragePage.default.addCar('BMW', 'X5', carMileage);\ncy.get('.car-heading').should('contain', 'BMW X5');\n// 2. Додаємо витрати палива\n_GaragePage.default.clickAddExpenseForFirstCar();\n_ExpensesPage.default.addFuelExpense(expenseMileage, '50', '2500');\n// Перевірка успішності (наприклад, поява алерта або закриття модалки)\ncy.get('.modal-content').should('not.exist');",
+              "err": {
+                "message": "CypressError: `Cypress.env()` does not work when `allowCypressEnv` is set to `false`. Please migrate to `cy.env()` or leverage other stateful methods to manage variables. The variable being accessed was: `userEmail`\n\nhttps://on.cypress.io/cypress-env-migration\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage and Fuel Expenses Flow`",
+                "estack": "CypressError: `Cypress.env()` does not work when `allowCypressEnv` is set to `false`. Please migrate to `cy.env()` or leverage other stateful methods to manage variables. The variable being accessed was: `userEmail`\n\nhttps://on.cypress.io/cypress-env-migration\n\nBecause this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `Garage and Fuel Expenses Flow`\n    at cypressErr (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:78521:18)\n    at Object.errByPath (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:78579:10)\n    at $Cypress.failCypressEnvWithWarning [as env] (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:41589:81)\n    at Context.eval (webpack:///../cypress/e2e/garage.cy.js:11:40)\n    at runnable.fn (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:146755:19)\n    at callFn (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:165952:21)\n    at Runnable.run (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:165939:7)\n    at <unknown> (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:172036:30)\n    at PassThroughHandlerContext.finallyHandler (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:4042:23)\n    at PassThroughHandlerContext.tryCatcher (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1777:23)\n    at Promise._settlePromiseFromHandler (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1489:31)\n    at Promise._settlePromise (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1546:18)\n    at Promise._settlePromise0 (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1615:18)\n    at Promise._settlePromise (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1559:21)\n    at Promise._settlePromise0 (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1591:10)\n    at Promise._settlePromises (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1671:18)\n    at Promise._fulfill (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1615:18)\n    at Promise._resolveCallback (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1409:57)\n    at Promise._settlePromiseFromHandler (https://qauto.forstudy.space/__cypress/runner/cypress_runner.js:1501:17)",
+                "diff": null
+              },
+              "uuid": "65589636-4af7-40d3-911d-7fa9025151ab",
+              "parentUUID": "ca4f3226-d7ac-4bd0-b292-0151ceb2e01a",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [],
+          "failures": [
+            "65589636-4af7-40d3-911d-7fa9025151ab"
+          ],
+          "pending": [],
+          "skipped": [],
+          "duration": 110,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
