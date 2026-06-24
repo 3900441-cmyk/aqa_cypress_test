@@ -25,3 +25,5 @@ jobs:
           CYPRESS_BASE_URL: https://qauto.forstudy.space
           CYPRESS_USER: guest
           CYPRESS_PASSWORD: welcome2qauto
+          CYPRESS_userEmail: "test_prod@example.com"
+          CYPRESS_userPassword: "6WiiW!9LTxAQBWW"
