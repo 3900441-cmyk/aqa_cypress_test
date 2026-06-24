@@ -10,13 +10,15 @@ class GaragePage {
   addCar(brand, model, mileage) {
     this.addCarButton.click();
     this.brandSelect.select(brand);
+    this.modelSelect.should('not.be.disabled');
+    
     this.modelSelect.select(model);
     this.mileageInput.type(mileage);
     this.submitAddCarButton.click();
   }
 
   clickAddExpenseForFirstCar() {
-    this.addExpenseButton.click();
+    this.addExpenseButton.click({ force: true });
   }
 }
 export default new GaragePage();

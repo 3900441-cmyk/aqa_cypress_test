@@ -17,7 +17,6 @@ describe('Garage and Fuel Expenses Flow', () => {
 
     GaragePage.addCar('BMW', 'X5', carMileage);
     cy.get('.car-heading').should('contain', 'BMW X5');
-
     cy.get('.car_add-expense').first().click({ force: true });
     
     ExpensesPage.addFuelExpense(expenseMileage, '50', '2500');
