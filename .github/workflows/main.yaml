@@ -18,11 +18,7 @@ jobs:
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
-          container: cypress/included:15.14.2
         env:
-          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
-          FORCE_NODE_VERSION: 20
-
           CYPRESS_BASE_URL: https://qauto.forstudy.space
           CYPRESS_USER: guest
           CYPRESS_PASSWORD: welcome2qauto
