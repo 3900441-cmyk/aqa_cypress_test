@@ -1,11 +1,23 @@
-const { defineConfig } = require("cypress");
+import { defineConfig } from "cypress";
 
-module.exports = defineConfig({
-  allowCypressEnv: false,
-
+export default defineConfig({
+  allowCypressEnv: true,
+  watchForFileChanges: false,
+  viewportHeight: 1080,
+  viewportWidth: 1920,
+  screenshotOnRunFailure: true,
+  
   e2e: {
+    baseUrl: 'https://qauto.forstudy.space/',
     setupNodeEvents(on, config) {
-      // implement node event listeners here
     },
+    specPattern: 'cypress/e2e/**/*.cy.js',
+  },
+  reporter: 'mochawesome',
+  reporterOptions: {
+    reportDir: 'cypress/reports',
+    overwrite: false,
+    html: false,
+    json: true,
   },
 });

@@ -1,0 +1,28 @@
+{
+  "name": "aqa_cypress_test",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/3900441-cmyk/aqa_cypress_test#readme",
+  "bugs": {
+    "url": "https://github.com/3900441-cmyk/aqa_cypress_test/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/3900441-cmyk/aqa_cypress_test.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run:qauto": "cypress run --config-file ./config/qauto.config.js",
+  "cy:run:qauto2": "cypress run --config-file ./config/qauto2.config.js"
+  },
+  "devDependencies": {
+    "cypress": "^15.14.2",
+    "mochawesome": "^7.1.4",
+    "mochawesome-merge": "^5.1.1",
+    "mochawesome-report-generator": "^6.3.2"
+  }
+}

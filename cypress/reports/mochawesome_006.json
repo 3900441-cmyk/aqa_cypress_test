@@ -1,0 +1,105 @@
+{
+  "stats": {
+    "suites": 1,
+    "tests": 1,
+    "passes": 1,
+    "pending": 0,
+    "failures": 0,
+    "start": "2026-05-29T11:08:50.944Z",
+    "end": "2026-05-29T11:08:57.298Z",
+    "duration": 6354,
+    "testsRegistered": 1,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "bd7d436f-db4f-4782-9dcb-26b4bf68b347",
+      "title": "",
+      "fullFile": "cypress\\e2e\\garage.cy.js",
+      "file": "cypress\\e2e\\garage.cy.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [],
+      "suites": [
+        {
+          "uuid": "6810c48c-56a9-4788-b510-1e9656b018b1",
+          "title": "Garage and Fuel Expenses Flow",
+          "fullFile": "",
+          "file": "",
+          "beforeHooks": [],
+          "afterHooks": [],
+          "tests": [
+            {
+              "title": "should successfully add a car and fuel expense for it",
+              "fullTitle": "Garage and Fuel Expenses Flow should successfully add a car and fuel expense for it",
+              "timedOut": null,
+              "duration": 6315,
+              "state": "passed",
+              "speed": "medium",
+              "pass": true,
+              "fail": false,
+              "pending": false,
+              "context": null,
+              "code": "const carMileage = 1200;\nconst expenseMileage = 1500;\n// 1. Додаємо машину\n_GaragePage.default.addCar('BMW', 'X5', carMileage);\ncy.get('.car-heading').should('contain', 'BMW X5');\n// 2. Додаємо витрати палива\n_GaragePage.default.clickAddExpenseForFirstCar();\n_ExpensesPage.default.addFuelExpense(expenseMileage, '50', '2500');\n// Перевірка успішності (наприклад, поява алерта або закриття модалки)\ncy.get('.modal-content').should('not.exist');",
+              "err": {},
+              "uuid": "2f3476df-1801-4cc2-b96a-54c1b1ad63ca",
+              "parentUUID": "6810c48c-56a9-4788-b510-1e9656b018b1",
+              "isHook": false,
+              "skipped": false
+            }
+          ],
+          "suites": [],
+          "passes": [
+            "2f3476df-1801-4cc2-b96a-54c1b1ad63ca"
+          ],
+          "failures": [],
+          "pending": [],
+          "skipped": [],
+          "duration": 6315,
+          "root": false,
+          "rootEmpty": false,
+          "_timeout": 2000
+        }
+      ],
+      "passes": [],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 0,
+      "root": true,
+      "rootEmpty": true,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.2.0"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": false,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.1.4"
+    },
+    "marge": {
+      "options": {
+        "reportDir": "cypress/reports",
+        "overwrite": false,
+        "html": false,
+        "json": true
+      },
+      "version": "6.3.2"
+    }
+  }
+}
