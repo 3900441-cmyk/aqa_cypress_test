@@ -13,7 +13,7 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
     totalCost: 50
   };
 
- beforeEach(() => {
+  beforeEach(() => {
     cy.login(Cypress.env('userEmail'), Cypress.env('userPassword'));
     cy.url().should('include', '/panel/garage');
   });
@@ -26,11 +26,11 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
     cy.get('#addCarModel').select(testCar.model);
     cy.get('#addCarMileage').type(testCar.mileage);
     cy.get('.modal-footer .btn-primary').click();
+
     cy.wait('@createCarRequest').then((interception) => {
       expect(interception.response.statusCode).to.be.oneOf([200, 201]);
       carId = interception.response.body.data.id;
       expect(carId).to.exist;
-      cy.log(`Created Car ID: ${carId}`);
     }).then(() => {
       cy.request('GET', '/api/cars').then((response) => {
         expect(response.status).to.eq(200);
