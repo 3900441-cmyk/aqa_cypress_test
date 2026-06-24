@@ -23,3 +23,25 @@ Cypress.Commands.add('login', (email, password) => {
   cy.get('#signinPassword').type(password, { sensitive: true });
   cy.get('.modal-footer .btn-primary').click();
 });
+
+Cypress.Commands.add('createCarViaApi', (carData) => {
+  return cy.request({
+    method: 'POST',
+    url: '/api/cars',
+    body: carData,
+  }).then((response) => {
+    expect(response.status).to.eq(201);
+    return response.body.data;
+  });
+});
+
+Cypress.Commands.add('createExpenseViaApi', (expenseData) => {
+  return cy.request({
+    method: 'POST',
+    url: '/api/expenses',
+    body: expenseData,
+  }).then((response) => {
+    expect(response.status).to.eq(201);
+    return response.body.data;
+  });
+});
