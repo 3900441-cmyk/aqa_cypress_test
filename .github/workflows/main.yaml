@@ -16,6 +16,7 @@ jobs:
 
       - name: Run Cypress tests
         uses: cypress-io/github-action@v6
+        cache-key: node-v24-cypress-force-new
         with:
           browser: chrome
         env:

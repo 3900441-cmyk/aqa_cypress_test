@@ -13,7 +13,7 @@ describe('Garage and Fuel Expenses Flow', () => {
     cy.get('#addCarBrand').select('Audi');
     cy.get('#addCarModel').should('not.be.disabled').select('TT');
     cy.get('#addCarMileage').type('1200');
-    cy.get('.modal-footer .btn-primary').click();
+    cy.get('.modal-footer .btn-primary').contains('Add').click({ force: true });
     cy.get('.car-heading').should('contain', 'Audi TT');
     cy.get('.car_add-expense').first().click({ force: true });
     cy.get('#addExpenseMileage').type('1500');
