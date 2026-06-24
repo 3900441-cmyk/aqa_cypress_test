@@ -10,11 +10,11 @@ describe('Garage and Fuel Expenses Flow', () => {
 
   it('should successfully add a car and fuel expense for it', () => {
     cy.get('.btn-primary').contains('Add car').click();
-    cy.get('#addCarBrand').select('BMW');
-    cy.get('#addCarModel').should('not.be.disabled').select('X5');
+    cy.get('#addCarBrand').select('Audi');
+    cy.get('#addCarModel').should('not.be.disabled').select('TT');
     cy.get('#addCarMileage').type('1200');
     cy.get('.modal-footer .btn-primary').click();
-    cy.get('.car-heading').should('contain', 'BMW X5');
+    cy.get('.car-heading').should('contain', 'Audi TT');
     cy.get('.car_add-expense').first().click({ force: true });
     cy.get('#addExpenseMileage').type('1500');
     cy.get('#addExpenseLiters').type('50');

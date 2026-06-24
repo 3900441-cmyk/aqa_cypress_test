@@ -1,14 +1,14 @@
 describe('Car and Expenses Hybrid (UI + API) Flow', () => {
   let carId;
   const testCar = {
-    brand: 'Audi',
-    model: 'TT',
-    mileage: 120
+    brand: 'Porsche',
+    model: '911',
+    mileage: Math.floor(Math.random() * 5000) + 100
   };
 
   const testExpense = {
     reportedAt: new Date().toISOString().split('T')[0],
-    mileage: 150,
+    mileage: 6000,
     liters: 20,
     totalCost: 50
   };
