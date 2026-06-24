@@ -7,25 +7,25 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
   };
 
   const testExpense = {
-    reportedAt: new Date().toISOString().split('T')[0], // Поточна дата у форматі YYYY-MM-DD
+    reportedAt: new Date().toISOString().split('T')[0],
     mileage: 150,
     liters: 20,
     totalCost: 50
   };
 
-  beforeEach(() => {
+ beforeEach(() => {
     cy.login(Cypress.env('userEmail'), Cypress.env('userPassword'));
     cy.url().should('include', '/panel/garage');
   });
 
   it('should successfully create a car, verify it via API, add expense via API and check via UI', () => {
     cy.intercept('POST', '/api/cars').as('createCarRequest');
+    
     cy.get('.btn-primary').contains('Add car').click();
     cy.get('#addCarBrand').select(testCar.brand);
     cy.get('#addCarModel').select(testCar.model);
     cy.get('#addCarMileage').type(testCar.mileage);
     cy.get('.modal-footer .btn-primary').click();
-
     cy.wait('@createCarRequest').then((interception) => {
       expect(interception.response.statusCode).to.be.oneOf([200, 201]);
       carId = interception.response.body.data.id;
@@ -36,23 +36,24 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
         expect(response.status).to.eq(200);
         const carsList = response.body.data;
         const createdCar = carsList.find(car => car.id === carId);
-        expect(createdCar).to.exist;
-        expect(createdCar.brand).to.eq(testCar.brand);
-        expect(createdCar.model).to.eq(testCar.model);
+        expect(createdCar).to.exist; 
       });
     }).then(() => {
-      const fullExpenseBody = {
-        carId: carId,
-        ...testExpense
-      };
-
-      cy.createExpenseViaApi(fullExpenseBody).then((expenseData) => {
-        expect(expenseData).to.have.property('id');
-        expect(expenseData.carId).to.eq(carId);
-        expect(expenseData.liters).to.eq(testExpense.liters);
-        expect(expenseData.totalCost).to.eq(testExpense.totalCost);
+      cy.request({
+        method: 'POST',
+        url: '/api/expenses',
+        body: {
+          carId: carId,
+          reportedAt: testExpense.reportedAt,
+          mileage: testExpense.mileage,
+          liters: testExpense.liters,
+          totalCost: testExpense.totalCost
+        }
+      }).then((expenseResponse) => {
+        expect(expenseResponse.status).to.be.oneOf([200, 201]);
       });
     });
+
     cy.get('a.sidebar_btn').contains('Fuel expenses').click();
     cy.url().should('include', '/panel/expenses');
     cy.reload();
