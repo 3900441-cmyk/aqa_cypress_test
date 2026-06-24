@@ -17,7 +17,7 @@ Cypress.Commands.add('login', (email, password) => {
       password: 'welcome2qauto'
     }
   };
-  cy.visit('https://qauto.forstudy.space/', authSettings);
+  cy.visit('https://guest:welcome2qauto@qauto.forstudy.space/', authSettings);
   cy.contains('Sign In').click();
   cy.get('#signinEmail').type(email);
   cy.get('#signinPassword').type(password, { sensitive: true });

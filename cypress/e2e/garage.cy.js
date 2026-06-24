@@ -3,7 +3,7 @@ import ExpensesPage from '../pageObjects/ExpensesPage';
 
 describe('Garage and Fuel Expenses Flow', () => {
   beforeEach(() => {
-    cy.visit('/'); 
+    cy.visit('https://guest:welcome2qauto@qauto.forstudy.space/'); 
     cy.get('.header_signin').click();
     cy.get('#signinEmail').type(Cypress.env('userEmail'));
     cy.get('#signinPassword').type(Cypress.env('userPassword'));
