@@ -2,9 +2,9 @@ name: Cypress Tests
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ main, master, cypress_githubactions ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, cypress_githubactions ]
 
 jobs:
   cypress-run:
