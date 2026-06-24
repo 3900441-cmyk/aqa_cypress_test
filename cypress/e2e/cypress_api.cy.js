@@ -19,14 +19,14 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
   });
 
   it('should successfully create a car, verify it via API, add expense via API and check via UI', () => {
+    cy.intercept('GET', '/api/cars/models*').as('getModels');
     cy.intercept('POST', '/api/cars').as('createCarRequest');
     
     cy.get('.btn-primary').contains('Add car').click();
     cy.get('#addCarBrand').select(testCar.brand);
+    cy.wait('@getModels'); 
+    cy.get('#addCarModel').should('not.be.disabled').select(testCar.model);
     
-    cy.get('#addCarModel').should('contain', testCar.model);
-    
-    cy.get('#addCarModel').select(testCar.model);
     cy.get('#addCarMileage').type(testCar.mileage);
     cy.get('.modal-footer .btn-primary').click();
 
