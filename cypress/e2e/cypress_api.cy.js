@@ -24,6 +24,7 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
     
     cy.get('.btn-primary').contains('Add car').click();
     cy.get('#addCarBrand').select(testCar.brand);
+    
     cy.wait('@getModels'); 
     cy.get('#addCarModel').should('not.be.disabled').select(testCar.model);
     
