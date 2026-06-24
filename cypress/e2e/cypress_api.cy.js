@@ -14,9 +14,10 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
   };
 
   beforeEach(() => {
-    cy.login(Cypress.env('userEmail'), Cypress.env('userPassword'));
+    // Просто вставляємо твої реальні дані як текст у лапках
+    cy.login('test_prod@example.com', '6WiiW!9LTxAQBWW');
     cy.url().should('include', '/panel/garage');
-  });
+});
 
   it('should successfully create a car, verify it via API, add expense via API and check via UI', () => {
     cy.intercept('POST', '/api/cars').as('createCarRequest');
