@@ -41,12 +41,16 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
         expect(createdCar.model).to.eq(testCar.model);
       });
     }).then(() => {
-      cy.createExpenseViaApi(carId, testExpense).then((expenseResponse) => {
-        expect(expenseResponse.status).to.be.oneOf([200, 201]);
-        expect(expenseResponse.body.data).to.have.property('id');
-        expect(expenseResponse.body.data.carId).to.eq(carId);
-        expect(expenseResponse.body.data.liters).to.eq(testExpense.liters);
-        expect(expenseResponse.body.data.totalCost).to.eq(testExpense.totalCost);
+      const fullExpenseBody = {
+        carId: carId,
+        ...testExpense
+      };
+
+      cy.createExpenseViaApi(fullExpenseBody).then((expenseData) => {
+        expect(expenseData).to.have.property('id');
+        expect(expenseData.carId).to.eq(carId);
+        expect(expenseData.liters).to.eq(testExpense.liters);
+        expect(expenseData.totalCost).to.eq(testExpense.totalCost);
       });
     });
     cy.get('a.sidebar_btn').contains('Fuel expenses').click();
