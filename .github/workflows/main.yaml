@@ -22,6 +22,9 @@ jobs:
         with:
           browser: chrome
         env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
+          FORCE_NODE_VERSION: 20
+          
           CYPRESS_BASE_URL: https://qauto.forstudy.space
           CYPRESS_USER: guest
           CYPRESS_PASSWORD: welcome2qauto
