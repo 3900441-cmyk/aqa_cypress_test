@@ -14,7 +14,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Run Cypress tests inside Docker Container
+      - name: Run Cypress tests
         uses: cypress-io/github-action@v6
         with:
           browser: chrome
