@@ -18,19 +18,19 @@ describe('Car and Expenses Hybrid (UI + API) Flow', () => {
     cy.url().should('include', '/panel/garage');
   });
 
-  it('should successfully create a car, verify it via API, add expense via API and check via UI', () => {
+   it('should successfully create a car, verify it via API, add expense via API and check via UI', () => {
     cy.intercept('POST', '/api/cars').as('createCarRequest');
-    
     cy.get('.btn-primary').contains('Add car').click();
     cy.get('#addCarBrand').select(testCar.brand);
+    cy.get('#addCarModel').should('not.be.disabled');
     cy.get('#addCarModel').select(testCar.model);
     cy.get('#addCarMileage').type(testCar.mileage);
     cy.get('.modal-footer .btn-primary').click();
-
     cy.wait('@createCarRequest').then((interception) => {
       expect(interception.response.statusCode).to.be.oneOf([200, 201]);
       carId = interception.response.body.data.id;
       expect(carId).to.exist;
+      cy.log(`Created Car ID: ${carId}`);
     }).then(() => {
       cy.request('GET', '/api/cars').then((response) => {
         expect(response.status).to.eq(200);
