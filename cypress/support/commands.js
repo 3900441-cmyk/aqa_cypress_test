@@ -11,18 +11,21 @@ Cypress.Commands.overwrite('type', (originalFn, element, text, options) => {
 });
 
 Cypress.Commands.add('login', (email, password) => {
-  cy.visit('https://qauto.forstudy.space/');
-  
+  const authSettings = {
+    auth: {
+      username: 'guest',
+      password: 'welcome2qauto'
+    }
+  };
+
+  cy.visit('https://qauto.forstudy.space/', authSettings);
   cy.get('body').then(($body) => {
     if ($body.find('.header_signin').length > 0) {
       cy.get('.header_signin').click();
       cy.get('#signinEmail').type(email);
       cy.get('#signinPassword').type(password, { sensitive: true });
       cy.get('.modal-footer .btn-primary').click();
-      
       cy.url().should('include', '/panel');
-    } else {
-      cy.log('Вже залогінені, пропускаємо крок логіну');
     }
   });
 });
