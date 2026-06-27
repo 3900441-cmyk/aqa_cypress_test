@@ -1,5 +1,10 @@
 describe('Garage and Fuel Expenses Flow', () => {
   beforeEach(() => {
+    cy.request('GET', '/api/cars').then((res) => {
+      res.body.data.forEach(car => {
+        cy.request('DELETE', `/api/cars/${car.id}`);
+      });
+    });
     cy.visit('https://guest:welcome2qauto@qauto.forstudy.space/'); 
     cy.get('.header_signin').click();
     cy.get('#signinEmail').type(Cypress.env('userEmail'));
@@ -9,7 +14,10 @@ describe('Garage and Fuel Expenses Flow', () => {
   });
 
   it('should successfully add a car and fuel expense for it', () => {
-    cy.get('button').contains('Add').should('be.enabled').click();
+    cy.get('button.btn-primary')
+  .contains('Add')
+  .should('not.be.disabled')
+  .click();
     cy.get('#addCarBrand').select('Audi');
     cy.get('#addCarModel').should('not.be.disabled').select('TT');
     cy.get('#addCarMileage').type('1200');
