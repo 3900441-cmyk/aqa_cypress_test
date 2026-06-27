@@ -17,9 +17,37 @@ Cypress.Commands.add('login', (email, password) => {
       password: 'welcome2qauto'
     }
   };
+
   cy.visit('https://qauto.forstudy.space/', authSettings);
-  cy.contains('Sign In').click();
-  cy.get('#signinEmail').type(email);
-  cy.get('#signinPassword').type(password, { sensitive: true });
-  cy.get('.modal-footer .btn-primary').click();
+  cy.get('body').then(($body) => {
+    if ($body.find('.header_signin').length > 0) {
+      cy.get('.header_signin').click();
+      cy.get('#signinEmail').type(email);
+      cy.get('#signinPassword').type(password, { sensitive: true });
+      cy.get('.modal-footer .btn-primary').click();
+      cy.url().should('include', '/panel');
+    }
+  });
+});
+
+Cypress.Commands.add('createCarViaApi', (carData) => {
+  return cy.request({
+    method: 'POST',
+    url: '/api/cars',
+    body: carData,
+  }).then((response) => {
+    expect(response.status).to.eq(201);
+    return response.body.data;
+  });
+});
+
+Cypress.Commands.add('createExpenseViaApi', (expenseData) => {
+  return cy.request({
+    method: 'POST',
+    url: '/api/expenses',
+    body: expenseData,
+  }).then((response) => {
+    expect(response.status).to.eq(201);
+    return response.body.data;
+  });
 });

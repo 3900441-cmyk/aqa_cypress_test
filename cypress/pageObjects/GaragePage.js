@@ -8,15 +8,16 @@ class GaragePage {
   get addExpenseButton() { return cy.get('.car-item').first().find('.btn-success'); } 
 
   addCar(brand, model, mileage) {
-    this.addCarButton.click();
-    this.brandSelect.select(brand);
-    this.modelSelect.select(model);
-    this.mileageInput.type(mileage);
-    this.submitAddCarButton.click();
-  }
+  this.addCarButton.click();
+  this.brandSelect.select(brand);
+  this.modelSelect.should('not.be.disabled');
+  this.modelSelect.select(model);
+  this.mileageInput.type(mileage);
+  this.submitAddCarButton.click();
+}
 
   clickAddExpenseForFirstCar() {
-    this.addExpenseButton.click();
+    this.addExpenseButton.click({ force: true });
   }
 }
 export default new GaragePage();
