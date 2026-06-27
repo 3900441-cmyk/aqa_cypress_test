@@ -1,10 +1,11 @@
 describe('Car and Expenses Hybrid (UI + API) Flow', () => {
   let carId;
+  const uniqueModel = 'TT ' + Date.now(); // Додаємо час для унікальності
   const testCar = {
-    brand: 'Porsche',
-    model: '911',
-    mileage: Math.floor(Math.random() * 5000) + 100
-  };
+    brand: 'Audi',
+    model: uniqueModel,
+    mileage: 120
+};
 
   const testExpense = {
     reportedAt: new Date().toISOString().split('T')[0],
