@@ -1,16 +1,17 @@
 describe('Garage and Fuel Expenses Flow', () => {
   beforeEach(() => {
-    cy.request('GET', '/api/cars').then((res) => {
-      res.body.data.forEach(car => {
-        cy.request('DELETE', `/api/cars/${car.id}`);
-      });
-    });
     cy.visit('https://guest:welcome2qauto@qauto.forstudy.space/'); 
     cy.get('.header_signin').click();
     cy.get('#signinEmail').type(Cypress.env('userEmail'));
     cy.get('#signinPassword').type(Cypress.env('userPassword'));
     cy.get('.modal-footer .btn-primary').click();
     cy.url().should('include', '/panel/garage');
+
+    cy.request('GET', '/api/cars').then((res) => {
+      res.body.data.forEach(car => {
+        cy.request('DELETE', `/api/cars/${car.id}`);
+      });
+    });
   });
 
   it('should successfully add a car and fuel expense for it', () => {
