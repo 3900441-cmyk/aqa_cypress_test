@@ -1,6 +1,6 @@
 describe('Car and Expenses Hybrid (UI + API) Flow', () => {
   let carId;
-  const uniqueModel = 'TT ';
+  const uniqueModel = 'TT';
   const testCar = {
     brand: 'Audi',
     model: uniqueModel,
